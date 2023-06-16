@@ -14,10 +14,13 @@ class Item:
         return self.priceVar * self.quantityVar
     
     def apply_discount(self):
-        self.price *= Item.pay_rate # Overite the attribute of price
+        self.priceVar = self.priceVar * self.pay_rate # Overite the attribute of price
 
 item1 = Item("Phone", 100, 1)
-item2 = Item("Laptop", 1000, 3)
+item1.apply_discount()
+print(item1.priceVar)
 
-print(Item.__dict__) # All the attributes for Class level
-print(item1.__dict__) # All the attributes for instance level
+item2 = Item("Laptop", 1000, 3)
+item2.pay_rate = 0.7
+item2.apply_discount()
+print(item2.priceVar)
